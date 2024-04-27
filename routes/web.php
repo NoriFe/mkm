@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/products', [ProductController::class, 'index']);
+Route::post('/products/export', [ProductController::class, 'export']);
+Route::post('/products/import', [ProductController::class, 'import']);
 
 Route::get('/', function () {
     return view('welcome');
