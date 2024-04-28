@@ -1,0 +1,7 @@
+[build]
+  command = "php artisan build"
+  publish = "public"
+  functions = "functions"
+
+[build.environment]
+  PHP_VERSION = "8.1"

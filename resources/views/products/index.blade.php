@@ -32,3 +32,24 @@
 @else
 <p>No products to remove.</p>
 @endif
+
+<h3>Update Product</h3>
+
+@if(count($products) > 0)
+<form action="{{ route('products.update', ['product' => $products[0]->id]) }}" method="POST">
+    @csrf
+    @method('PUT')
+    <select name="product_id">
+        @foreach ($products as $product)
+            <option value="{{ $product->id }}">{{ $product->name }}</option>
+        @endforeach
+    </select>
+    <input type="text" name="name" placeholder="New Product Name">
+    <input type="text" name="sku" placeholder="New SKU">
+    <input type="text" name="description" placeholder="New Description">
+    <input type="text" name="brand" placeholder="New Brand">
+    <button type="submit">Update Product</button>
+</form>
+@else
+<p>No products to update.</p>
+@endif
