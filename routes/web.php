@@ -23,6 +23,7 @@ Route::post('/products', [ProductController::class, 'store'])->name('products.st
 Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
 Route::get('/products', 'App\Http\Controllers\ProductController@index')->name('products.index');
 Route::post('/products/csv', [ProductController::class, 'storeCsv'])->name('products.storeCsv');
+Route::get('/products/{sku}', [ProductController::class, 'show']);
 
 
 

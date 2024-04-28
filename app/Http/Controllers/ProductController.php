@@ -85,4 +85,16 @@ class ProductController extends Controller
             return redirect()->route('products.index')->with('error', 'Product not found');
         }
     }
+
+    public function show($sku)
+    {
+        // finding product by sku
+        $product = Product::where('sku', $sku)->first();
+
+        if ($product) {
+            return response()->json($product);
+        } else {
+            return response()->json(['error' => 'Product not found'], 404);
+        }
+    }
 }
