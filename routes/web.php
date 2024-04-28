@@ -13,10 +13,16 @@ use App\Http\Controllers\ProductController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/products', [ProductController::class, 'index']);
-Route::post('/products/export', [ProductController::class, 'export']);
-Route::post('/products/import', [ProductController::class, 'import']);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/products', 'App\Http\Controllers\ProductController@index');
+Route::post('/products/export', [ProductController::class, 'export']);
+Route::post('/products/import', [ProductController::class, 'import'])->name('products.import');
+
+Route::get('/', [ProductController::class, 'index']);
+Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
+Route::get('/products', 'App\Http\Controllers\ProductController@index')->name('products.index');
+Route::post('/products/csv', [ProductController::class, 'storeCsv'])->name('products.storeCsv');
+
+
+
