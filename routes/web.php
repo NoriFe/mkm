@@ -15,16 +15,15 @@ use App\Http\Controllers\ProductController;
 */
 
 
-Route::post('/products/export', [ProductController::class, 'export']);
-Route::post('/products/import', [ProductController::class, 'import'])->name('products.import');
-
-Route::get('/', [ProductController::class, 'index']);
+Route::get('/', [ProductController::class, 'index'])->name('products.index');
+Route::get('/products/{sku}', [ProductController::class, 'show'])->name('products.show');
 Route::post('/products', [ProductController::class, 'store'])->name('products.store');
-Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
-Route::get('/products', 'App\Http\Controllers\ProductController@index')->name('products.index');
-Route::post('/products/csv', [ProductController::class, 'storeCsv'])->name('products.storeCsv');
-Route::get('/products/{sku}', [ProductController::class, 'show']);
 Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
+Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
+
+Route::post('/products/export', [ProductController::class, 'export'])->name('products.export');
+Route::post('/products/import', [ProductController::class, 'import'])->name('products.import');
+Route::post('/products/csv', [ProductController::class, 'storeCsv'])->name('products.storeCsv');
 
 
 
