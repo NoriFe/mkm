@@ -27,14 +27,11 @@ class ProcessCsvJob implements ShouldQueue
 
             // processing each row
             while (($data = fgetcsv($handle, 1000, ',')) !== false) {
-                // here you can process each row of the CSV file
-                // for example, you can create a new product
-                Product::create([
-                    'name' => $data[0],
-                    'sku' => $data[1],
-                    'description' => $data[2],
-                    'brand' => $data[3],
-                ]);
+                // update an existing product or create a new one
+                Product::updateOrCreate(
+                    ['sku' => $data[1]],
+                    ['name' => $data[0], 'description' => $data[2], 'brand' => $data[3]]
+            );
             }
 
             fclose($handle);
