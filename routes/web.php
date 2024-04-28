@@ -14,7 +14,7 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/products', 'App\Http\Controllers\ProductController@index');
+
 Route::post('/products/export', [ProductController::class, 'export']);
 Route::post('/products/import', [ProductController::class, 'import'])->name('products.import');
 
