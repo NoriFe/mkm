@@ -1,6 +1,1 @@
-[build]
-  command = "composer install && npm install && php artisan migrate && php artisan optimize"
-  publish = "public"
 
-[build.environment]
-  PHP_VERSION = "8.2"
