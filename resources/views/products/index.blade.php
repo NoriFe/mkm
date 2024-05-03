@@ -2,7 +2,12 @@
 
 <ul>
     @foreach ($products as $product)
-        <li>{{ $product->name }}</li>
+      <li>
+        <strong>Name:</strong> {{ $product->name }} <br>
+        <strong>SKU:</strong> {{ $product->sku }} <br>
+        <strong>Description:</strong> {{ $product->description }} <br>
+        <strong>Brand:</strong> {{ $product->brand }}
+      </li><br>
     @endforeach
 </ul>
 
